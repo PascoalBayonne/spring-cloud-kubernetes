@@ -16,12 +16,18 @@ public class ConfigMapController {
     @Value("${default.configmap}")
     private String defaultConfigMapMsg;
 
+    @Value("${TEMP_DIR}")
+    private String tempDirectory;
+
     @GetMapping
     public ResponseEntity<String> getConfigMap(@RequestBody final String configMap) {
         if (configMap == null || configMap.isEmpty()) {
             return new ResponseEntity<>("Given configMap is blank", HttpStatus.BAD_REQUEST);
         }
         System.getenv().forEach((s, s2) -> System.out.println(s+" : "+s2));
+
+        System.out.println("\n\n");
+        System.out.println("\n Now reading the value assigned in my prop file: TEMP_DIR => "+tempDirectory);
 
         String foundConfigMap = System.getenv(configMap);
         if (foundConfigMap == null){

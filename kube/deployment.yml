@@ -19,14 +19,16 @@ spec:
             - containerPort: 8080
           imagePullPolicy: Always
           env:
-            # Define the environment variable
             - name: SPECIAL_LEVEL_KEY
               valueFrom:
                 configMapKeyRef:
-                  # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
                   name: spring-cloud-stream-kafka-topics
-                  # Specify the key associated with the value
                   key: customer.topic
+            - name: TEMP_DIR
+              valueFrom:
+                configMapKeyRef:
+                  name: env-tem-dir-config
+                  key: server_folder
 ---
 apiVersion: v1
 kind: Service
