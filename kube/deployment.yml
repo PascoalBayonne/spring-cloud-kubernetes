@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configmap-example-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: configmap-example-api
+  template:
+    metadata:
+      labels:
+        app: configmap-example-api
+    spec:
+      containers:
+        - name: app
+          image: eddybayonne/configmap-example-api:1.0.0
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+          env:
+            # Define the environment variable
+            - name: SPECIAL_LEVEL_KEY
+              valueFrom:
+                configMapKeyRef:
+                  # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+                  name: spring-cloud-stream-kafka-topics
+                  # Specify the key associated with the value
+                  key: customer.topic
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: configmap-example-api
+spec:
+  selector:
+    app: configmap-example-api
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
