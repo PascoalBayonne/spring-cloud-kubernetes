@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-topic-config
+  namespace: default
+data:
+  dossier.topic: dossier
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-env-config
+  namespace: default
+data:
+  log_level: INFO
+
+#Example this file we could have it in our repository in that order creating configMap we can just run the following command
+#kubectl create -f https://yourserver.io/configmaps.yaml
+#now you can check your configMaps with kubectl get configmap
