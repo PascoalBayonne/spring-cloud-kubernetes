@@ -14,10 +14,17 @@ spec:
     spec:
       containers:
         - name: app
-          image: eddybayonne/configmap-example-api:1.0.0
+          image: eddybayonne/configmap-example-api:2.0.0
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: config
+          configMap:
+            name: configmap-example-api
 #          env:
 #            - name: SPECIAL_LEVEL_KEY
 #              valueFrom:

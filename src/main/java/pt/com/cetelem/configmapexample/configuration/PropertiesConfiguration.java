@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "bean")
 public class PropertiesConfiguration {
 
-    private String message;
+    private String message = "Hello world with default configMap";
 
     public String getMessage() {
         return message;

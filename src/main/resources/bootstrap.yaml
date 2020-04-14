@@ -8,3 +8,4 @@ spring:
             name: configmap-example-api
       reload:
         enabled: true
+#name: configMap-example-api: is the name of configMap created in the file my-configMap.yaml: Spring needs to know it before it starts loading and ... the app container and bla bla bla

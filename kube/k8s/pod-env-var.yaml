@@ -2,11 +2,11 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: pod-env-var
+  name: configmap-example-api
 spec:
   containers:
     - name: configmap-example-api
       image: configmap-example-api
       envFrom:
         - configMapRef:
-            name: my-env-var.properties
+            name: env-var
