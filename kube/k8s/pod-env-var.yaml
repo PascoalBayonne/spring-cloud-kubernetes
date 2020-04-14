@@ -1,0 +1,12 @@
+#This file is used only in order to attach the environment variable with your pod.
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod-env-var
+spec:
+  containers:
+    - name: configmap-example-api
+      image: configmap-example-api
+      envFrom:
+        - configMapRef:
+            name: my-env-var.properties

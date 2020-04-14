@@ -18,17 +18,17 @@ spec:
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
-          env:
-            - name: SPECIAL_LEVEL_KEY
-              valueFrom:
-                configMapKeyRef:
-                  name: spring-cloud-stream-kafka-topics
-                  key: customer.topic
-            - name: TEMP_DIR
-              valueFrom:
-                configMapKeyRef:
-                  name: env-tem-dir-config
-                  key: server_folder
+#          env:
+#            - name: SPECIAL_LEVEL_KEY
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: spring-cloud-stream-kafka-topics
+#                  key: customer.topic
+#            - name: TEMP_DIR
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: env-tem-dir-config
+#                  key: server_folder
 ---
 apiVersion: v1
 kind: Service
