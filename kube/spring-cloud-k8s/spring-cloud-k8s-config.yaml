@@ -1,1 +1,11 @@
 #name this file as you wish but for this example i will name it as it is in order to make sure that this file is being used for spring cloud kubernetes example
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: configmap-example-api
+data:
+  application.properties: |-
+    default.configmap=the default config map is: none, after settings is : %s
+    TEMP_DIR=/rico/srv/services/target
+    app.github.repository=https://github.com/PascoalBayonne
+    bean.message=Work from refresh
